@@ -11,12 +11,19 @@ class MyTextField extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() {
-    return _MyTextField();
+    return _MyTextFieldState();
   }
 }
 
-class _MyTextField extends State<MyTextField> {
+class _MyTextFieldState extends State<MyTextField> {
   bool obscureText = false;
+  TextEditingController controller = TextEditingController();
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
 
   @override
   void initState() {

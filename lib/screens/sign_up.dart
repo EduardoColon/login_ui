@@ -1,20 +1,52 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:login_ui/screens/default_screen.dart';
-import 'package:login_ui/screens/sign_up.dart';
+import 'package:login_ui/widgets/my_drop_down.dart';
 import 'package:login_ui/widgets/my_text_field.dart';
 import 'package:transition/transition.dart';
 
-class Login extends StatefulWidget {
-  const Login({Key? key}) : super(key: key);
+class SignUp extends StatefulWidget {
+  const SignUp({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
-    return _LoginState();
+    return _SignUpState();
   }
 }
 
-class _LoginState extends State<Login> {
+class _SignUpState extends State<SignUp> {
+  List<DropdownMenuItem<String>> countries = [
+    const DropdownMenuItem<String>(
+      value: ("GT"),
+      child: Text("Guatemala", style: TextStyle(color: Colors.black)),
+    ),
+    const DropdownMenuItem<String>(
+      value: ("SV"),
+      child: Text("El Salvador", style: TextStyle(color: Colors.black)),
+    ),
+    const DropdownMenuItem<String>(
+      value: ("HN"),
+      child: Text("Honduras", style: TextStyle(color: Colors.black)),
+    ),
+    const DropdownMenuItem<String>(
+      value: ("CR"),
+      child: Text("Costa Rica", style: TextStyle(color: Colors.black)),
+    ),
+    const DropdownMenuItem<String>(
+      value: ("PA"),
+      child: Text("Panama", style: TextStyle(color: Colors.black)),
+    ),
+    const DropdownMenuItem<String>(
+      value: ("NI"),
+      child: Text("Nicaragua", style: TextStyle(color: Colors.black)),
+    ),
+    const DropdownMenuItem<String>(
+      value: ("RD"),
+      child:
+          Text("Republica Dominicana", style: TextStyle(color: Colors.black)),
+    ),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,56 +60,34 @@ class _LoginState extends State<Login> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const SizedBox(
-                height: 5,
+                height: 30,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  const Text("Sign In",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 40,
-                          fontWeight: FontWeight.bold)),
-                  InkWell(
-                    child: const Padding(
-                      padding: EdgeInsets.only(bottom: 5),
-                      child: Text(
-                        "Sign Up",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                        ),
-                      ),
-                    ),
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          Transition(
-                              child: const SignUp(),
-                              transitionEffect:
-                                  TransitionEffect.RIGHT_TO_LEFT));
-                    },
-                  )
-                ],
+              const Align(
+                alignment: Alignment.centerLeft,
+                child: Text("Sign Up",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 40,
+                        fontWeight: FontWeight.bold)),
               ),
               const SizedBox(
-                height: 72,
+                height: 30,
               ),
-              const CircleAvatar(
-                radius: 130.0,
-                backgroundImage: AssetImage("assets/images/avatar.png"),
-                backgroundColor: Colors.transparent,
-              ),
-              const SizedBox(
-                height: 65,
+              MyTextField(
+                labelText: "Email",
+                isPasswordField: false,
               ),
               MyTextField(
                 labelText: "Username",
                 isPasswordField: false,
               ),
+              MyDropDown(labelText: "Country", items: countries),
               MyTextField(
                 labelText: "Password",
+                isPasswordField: true,
+              ),
+              MyTextField(
+                labelText: "Confirm Password",
                 isPasswordField: true,
               ),
               const SizedBox(
@@ -100,7 +110,7 @@ class _LoginState extends State<Login> {
                           Theme.of(context).primaryColorDark),
                     ),
                     child: const Text(
-                      "Login",
+                      "Sign Up",
                       style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                     )),
@@ -109,7 +119,7 @@ class _LoginState extends State<Login> {
                 height: 50,
               ),
               const Text(
-                "Sign in with",
+                "Sign up with",
                 style: TextStyle(color: Colors.white, fontSize: 18),
               ),
               const SizedBox(
