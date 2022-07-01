@@ -1,3 +1,4 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:login_ui/screens/default_screen.dart';
@@ -18,32 +19,46 @@ class _SignUpState extends State<SignUp> {
   List<DropdownMenuItem<String>> countries = [
     const DropdownMenuItem<String>(
       value: ("GT"),
-      child: Text("Guatemala", style: TextStyle(color: Colors.black)),
-    ),
-    const DropdownMenuItem<String>(
-      value: ("SV"),
-      child: Text("El Salvador", style: TextStyle(color: Colors.black)),
-    ),
-    const DropdownMenuItem<String>(
-      value: ("HN"),
-      child: Text("Honduras", style: TextStyle(color: Colors.black)),
+      child: Padding(
+        padding: EdgeInsets.only(left: 10),
+        child: Text("Guatemala", style: TextStyle(color: Colors.black)),
+      ),
     ),
     const DropdownMenuItem<String>(
       value: ("CR"),
-      child: Text("Costa Rica", style: TextStyle(color: Colors.black)),
+      child: Padding(
+        padding: EdgeInsets.only(left: 10),
+        child: Text("Costa Rica", style: TextStyle(color: Colors.black)),
+      ),
     ),
     const DropdownMenuItem<String>(
       value: ("PA"),
-      child: Text("Panama", style: TextStyle(color: Colors.black)),
-    ),
-    const DropdownMenuItem<String>(
-      value: ("NI"),
-      child: Text("Nicaragua", style: TextStyle(color: Colors.black)),
+      child: Padding(
+        padding: EdgeInsets.only(left: 10),
+        child: Text("Panama", style: TextStyle(color: Colors.black)),
+      ),
     ),
     const DropdownMenuItem<String>(
       value: ("RD"),
-      child:
-          Text("Republica Dominicana", style: TextStyle(color: Colors.black)),
+      child: Padding(
+        padding: EdgeInsets.only(left: 10),
+        child:
+            Text("Republica Dominicana", style: TextStyle(color: Colors.black)),
+      ),
+    ),
+    const DropdownMenuItem<String>(
+      value: ("SV"),
+      child: Padding(
+        padding: EdgeInsets.only(left: 10),
+        child: Text("El Salvador", style: TextStyle(color: Colors.black)),
+      ),
+    ),
+    const DropdownMenuItem<String>(
+      value: ("HN"),
+      child: Padding(
+        padding: EdgeInsets.only(left: 10),
+        child: Text("Honduras", style: TextStyle(color: Colors.black)),
+      ),
     ),
   ];
 
@@ -98,12 +113,20 @@ class _SignUpState extends State<SignUp> {
                 height: 50,
                 child: ElevatedButton(
                     onPressed: () {
-                      Navigator.push(
-                          context,
-                          Transition(
-                              child: const DefaultScreen(),
-                              transitionEffect:
-                                  TransitionEffect.RIGHT_TO_LEFT));
+                      AwesomeDialog(
+                              context: context,
+                              dialogType: DialogType.SUCCES,
+                              title: "Congratulations",
+                              desc: "Your account has been created succesfully")
+                          .show()
+                          .then((_) {
+                        Navigator.push(
+                            context,
+                            Transition(
+                                child: const DefaultScreen(),
+                                transitionEffect:
+                                    TransitionEffect.RIGHT_TO_LEFT));
+                      });
                     },
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all<Color>(
@@ -112,7 +135,7 @@ class _SignUpState extends State<SignUp> {
                     child: const Text(
                       "Sign Up",
                       style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                      TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                     )),
               ),
               const SizedBox(
@@ -132,22 +155,22 @@ class _SignUpState extends State<SignUp> {
                 children: const [
                   InkWell(
                       child: FaIcon(
-                    FontAwesomeIcons.facebook,
-                    color: Colors.white,
-                    size: 48,
-                  )),
+                        FontAwesomeIcons.facebook,
+                        color: Colors.white,
+                        size: 48,
+                      )),
                   InkWell(
                       child: FaIcon(
-                    FontAwesomeIcons.linkedin,
-                    color: Colors.white,
-                    size: 48,
-                  )),
+                        FontAwesomeIcons.linkedin,
+                        color: Colors.white,
+                        size: 48,
+                      )),
                   InkWell(
                       child: FaIcon(
-                    FontAwesomeIcons.google,
-                    color: Colors.white,
-                    size: 48,
-                  )),
+                        FontAwesomeIcons.google,
+                        color: Colors.white,
+                        size: 48,
+                      )),
                 ],
               ),
               const SizedBox(

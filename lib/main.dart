@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:login_ui/screens/login.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:login_ui/screens/login.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Login',
       theme: ThemeData(
-          primarySwatch: Colors.blue,
+          primarySwatch: Colors.deepPurple,
           primaryColor: const Color(0xFF6D63FF),
           primaryColorDark: const Color(0xFF564FCC),
           textTheme: GoogleFonts.robotoTextTheme(),

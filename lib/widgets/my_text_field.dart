@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+//ignore: must_be_immutable
 class MyTextField extends StatefulWidget {
   MyTextField(
       {Key? key, required this.labelText, required this.isPasswordField})
@@ -42,23 +43,30 @@ class _MyTextFieldState extends State<MyTextField> {
       child: TextField(
         textAlignVertical: TextAlignVertical.center,
         obscureText: obscureText,
-        style: const TextStyle(fontSize: 20,),
+        style: const TextStyle(
+          fontSize: 20,
+        ),
         decoration: InputDecoration(
-            floatingLabelStyle: TextStyle(color: Theme.of(context).primaryColorDark),
+            floatingLabelStyle:
+                TextStyle(color: Theme.of(context).primaryColorDark),
             enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
-                borderSide: const BorderSide(color: Colors.white)
-            ),
+                borderSide: const BorderSide(color: Colors.white)),
             focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(color: Theme.of(context).primaryColorDark)
-            ),
+                borderSide: const BorderSide(color: Colors.white)),
             labelStyle: TextStyle(color: Colors.grey[500]),
             fillColor: Colors.white,
             contentPadding:
                 const EdgeInsets.symmetric(horizontal: 10, vertical: 0),
             filled: true,
-            labelText: widget.labelText,
+            label: Container(
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5), color: Colors.white),
+              child: Text(
+                widget.labelText,
+              ),
+            ),
             suffixIcon: widget.isPasswordField
                 ? InkWell(
                     onTap: () {
@@ -71,9 +79,11 @@ class _MyTextFieldState extends State<MyTextField> {
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: [ FaIcon(obscureText
-                          ? FontAwesomeIcons.eye
-                          : FontAwesomeIcons.eyeSlash),],
+                      children: [
+                        FaIcon(obscureText
+                            ? FontAwesomeIcons.eyeSlash
+                            : FontAwesomeIcons.eye),
+                      ],
                     ),
                   )
                 : const SizedBox()),
